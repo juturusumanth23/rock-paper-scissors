@@ -11,3 +11,8 @@ function getComputerChoice() {
         return "scissors"
     }
 }
+
+function getHumanchoice() {
+    return prompt("Enter user input")
+}
+console.log(getHumanchoice())
