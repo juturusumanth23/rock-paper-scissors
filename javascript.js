@@ -19,19 +19,45 @@ function getHumanchoice() {
 function playRound(humanChoice, computerChoice){
     let x = humanChoice.toLowerCase();
     let y = computerChoice.toLowerCase();
-    if (x < y) {
+    if(x == 'paper' && y == 'scissors') {
+        console.log(`You lose! ${y} beats ${x}`);
+        return 0;        
+    }
+    else if (x < y) {
         console.log(`You win! ${x} beats ${y}`);
-        humanScore += 1;
+        return 1;
+    }
+    else if (x > y) {
+        console.log(`You lose! ${y} beats ${x}`);
+        return 0;
     }
     else {
-        console.log(`You lose! ${y} beats ${x}`);
-        computerScore += 1;
+        console.log('Tie');
+        return 2;
     }
 }
 
-let humanScore = 0;
-let computerScore = 0;
-let humanChoice = getHumanchoice();
-let computerChoice = getComputerChoice();
-
-playRound(humanChoice, computerChoice);
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+    let humanChoice = getHumanchoice;
+    let computerChoice = getComputerChoice;
+    for (i=0; i<5; i++) {
+        let result = playRound(humanChoice(), computerChoice());
+        if(result == 1) {
+            humanScore += 1;
+        }
+        else if(result == 0) {
+            computerScore += 1;
+        }
+    }
+    console.log(`Your Score at the end of the game is '${humanScore}'`);
+    console.log(`Computer Score at the end of the game is '${computerScore}'`);
+    if (humanScore > computerScore) {
+        return "So, You are the Final Winner";
+    }
+    else {
+        return "So, Computer is the Final Winner";
+    }
+}
+console.log(playGame());
