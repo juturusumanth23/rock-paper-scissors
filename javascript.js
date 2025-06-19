@@ -1,6 +1,6 @@
 function getComputerChoice() {
     let randomNumber = () => Math.floor(Math.random()*3)+1;
-    x = randomNumber();
+    let x = randomNumber();
     if (x == 1) {
         return "rock";
     }
@@ -15,4 +15,23 @@ function getComputerChoice() {
 function getHumanchoice() {
     return prompt("Enter user input")
 }
-console.log(getHumanchoice())
+
+function playRound(humanChoice, computerChoice){
+    let x = humanChoice.toLowerCase();
+    let y = computerChoice.toLowerCase();
+    if (x < y) {
+        console.log(`You win! ${x} beats ${y}`);
+        humanScore += 1;
+    }
+    else {
+        console.log(`You lose! ${y} beats ${x}`);
+        computerScore += 1;
+    }
+}
+
+let humanScore = 0;
+let computerScore = 0;
+let humanChoice = getHumanchoice();
+let computerChoice = getComputerChoice();
+
+playRound(humanChoice, computerChoice);
